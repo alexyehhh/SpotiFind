@@ -92,6 +92,7 @@ html {
     min-height: 100%;
 }
 
+/*Thinking of adding a wave background instead*/
 body {
     background: linear-gradient(to bottom, #9bc19b, #cbf2cb);
   }
