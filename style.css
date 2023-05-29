@@ -5,6 +5,10 @@
     height: 100vh;
 }
 
+h1{
+    color: #333333;
+}
+
 #applicationName {
     font-family: marker felt;
     font-weight: bold;
@@ -67,7 +71,7 @@
 
 #connectBtn:after {
     content: "";
-    background-color: #e9dfca;
+    background-color: #E8F3E8;
     width: 100%;
     z-index: -1;
     position: absolute;
@@ -90,9 +94,59 @@
 
 html {
     min-height: 100%;
+    color: #0A3409;
 }
 
 /*Thinking of adding a wave background instead*/
-body {
-    background: linear-gradient(to bottom, #9bc19b, #cbf2cb);
+
+  html,
+  body {
+    height: 100%;
+  }
+  
+  body {
+    background:#559E54;
+    overflow: hidden;
+  }
+  
+  .ocean {
+    height: 5%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #92C591;
+  }
+  
+  .wave {
+    background: url("wave.svg") repeat-x;
+    position: absolute;
+    bottom: -10px;
+    width: 6400px;
+    height: 200px;
+    animation: wave 12s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite, swell 8s ease -1.25s infinite;;
+    transform: translate3d(0, 0, 0);
+  }
+  
+  
+  
+  @keyframes wave {
+    0% {
+      margin-left: 0;
+    }
+    100% {
+      margin-left: -1600px;
+    }
+  }
+  @keyframes swell {
+    0%,
+      100% {
+      transform: translate3d(0, -40px, 0);
+    }
+    50% {
+      transform: translate3d(0, -10px, 0);
+    }
+  }
+  .endWave{
+      display:none;
   }
