@@ -12,7 +12,7 @@ h1{
 #applicationName {
     font-family: marker felt;
     font-weight: bold;
-    font-size: 50px;
+    font-size: 70px;
     position: absolute;
     top: 20px; /* Adjust this value to position Heading 1 from the top */
     left: 50%; /* Adjust this value to horizontally position Heading 1 */
@@ -20,10 +20,10 @@ h1{
 }
 
 #applicationDescription {
-    font-size: 15px;
+    font-size: 20px;
     font-family: 'Courier New', Courier, monospace;
     position: absolute;
-    top: 150px; /* Adjust this value to position Heading 1 from the top */
+    top: 200px; /* Adjust this value to position Heading 1 from the top */
     left: 50%; /* Adjust this value to horizontally position Heading 1 */
     transform: translateX(-50%); /* Centers Heading 1 horizontally */
     text-align: center;
@@ -31,10 +31,10 @@ h1{
 }
 
 #connectDescription {
-    font-size: 15px;
+    font-size: 20px;
     font-family: 'Courier New', Courier, monospace;
     position: absolute;
-    top: 350px; /* Adjust this value to position Heading 1 from the top */
+    top: 450px; /* Adjust this value to position Heading 1 from the top */
     left: 50%; /* Adjust this value to horizontally position Heading 1 */
     transform: translateX(-50%); /* Centers Heading 1 horizontally */
     text-align: center;
@@ -63,7 +63,7 @@ h1{
 
     /*Center button */
     position: absolute;
-    top: 450px; /* Adjust this value to position Heading 1 from the top */
+    top: 550px; /* Adjust this value to position Heading 1 from the top */
     left: 50%; /* Adjust this value to horizontally position Heading 1 */
     transform: translateX(-50%); /* Centers Heading 1 horizontally */
     
@@ -71,7 +71,7 @@ h1{
 
 #connectBtn:after {
     content: "";
-    background-color: #E8F3E8;
+    background-color: #cfefcf;
     width: 100%;
     z-index: -1;
     position: absolute;
@@ -94,7 +94,7 @@ h1{
 
 html {
     min-height: 100%;
-    color: #0A3409;
+    color: #434343;
 }
 
 /*Thinking of adding a wave background instead*/
@@ -105,7 +105,7 @@ html {
   }
   
   body {
-    background:#559E54;
+    background:#92C591;
     overflow: hidden;
   }
   
@@ -115,7 +115,7 @@ html {
     position: absolute;
     bottom: 0;
     left: 0;
-    background: #92C591;
+    background:#559E54;
   }
   
   .wave {
@@ -123,7 +123,7 @@ html {
     position: absolute;
     bottom: -10px;
     width: 6400px;
-    height: 200px;
+    height: 400px;
     animation: wave 12s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite, swell 8s ease -1.25s infinite;;
     transform: translate3d(0, 0, 0);
   }
