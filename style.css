@@ -6,7 +6,7 @@
 }
 
 h1{
-    color: #333333;
+    color: #0A3409;
 }
 
 #applicationName {
@@ -27,6 +27,7 @@ h1{
     left: 50%; /* Adjust this value to horizontally position Heading 1 */
     transform: translateX(-50%); /* Centers Heading 1 horizontally */
     text-align: center;
+    color: #305A30
     
 }
 
@@ -38,6 +39,7 @@ h1{
     left: 50%; /* Adjust this value to horizontally position Heading 1 */
     transform: translateX(-50%); /* Centers Heading 1 horizontally */
     text-align: center;
+    color: #0A3409;
 
 }
 
@@ -71,7 +73,7 @@ h1{
 
 #connectBtn:after {
     content: "";
-    background-color: #cfefcf;
+    background-color: #c6dcc6;
     width: 100%;
     z-index: -1;
     position: absolute;
@@ -94,7 +96,6 @@ h1{
 
 html {
     min-height: 100%;
-    color: #434343;
 }
 
 /*Thinking of adding a wave background instead*/
