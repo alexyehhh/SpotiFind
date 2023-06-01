@@ -1,4 +1,12 @@
 /* Basic Layout for Website */
+/*Color themes: 
+#0A3409 dark green
+#305A30 
+#559E54
+#92C591
+#EBF7E3 very light green
+https://www.w3schools.com/colors/colors_monochromatic.asp
+*/
 
 .container{
     position: relative;
@@ -44,7 +52,9 @@ h1{
 }
 
 
-
+.hidden {
+  display: none;
+}
 
 /* button CSS */
 
@@ -98,7 +108,7 @@ html {
     min-height: 100%;
 }
 
-/*Thinking of adding a wave background instead*/
+/*Wave background*/
 
   html,
   body {
@@ -151,3 +161,5 @@ html {
   .endWave{
       display:none;
   }
+
+/**/
