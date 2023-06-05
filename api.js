@@ -1,5 +1,6 @@
 const express = require('express');// import the Express.js library
 const request = require('request');// import the request library
+const rp = require('request-promise');
 
 const app = express();// create an instance of an Express application to make endpoints for server
 
@@ -58,3 +59,68 @@ app.get('/error', (req, res) => {// define a route for the error endpoint. Displ
 app.listen(3000, () => {// start the server making it listen for requests on port 3000.
 	console.log('Server is running on port 3000');
   });
+
+  // GET track details
+app.get('/track/:id', (req, res) => {
+  let options = {
+    url: `https://api.spotify.com/v1/tracks/${req.params.id}`, // Spotify's track endpoint with the track id
+    headers: { 'Authorization': 'Bearer ' + access_token }, // provide the access token in the header
+    json: true
+  };
+
+  rp.get(options) // make the request
+    .then(response => {
+      // format and return track details
+      res.json({
+        name: response.name,
+        artist: response.artists[0].name,
+        album: response.album.name
+      });
+    })
+    .catch(error => {
+      console.error('Failed to fetch track details:', error);
+      res.send('Failed to fetch track details. Please try again.');
+    });
+});
+
+// POST add track to playlist
+app.post('/playlist/:playlist_id/track/:track_id', (req, res) => {
+  let options = {
+    url: `https://api.spotify.com/v1/playlists/${req.params.playlist_id}/tracks`, // Spotify's playlist track endpoint with the playlist id
+    headers: { 'Authorization': 'Bearer ' + access_token }, // provide the access token in the header
+    body: { uris: [`spotify:track:${req.params.track_id}`] }, // the track URIs to add to the playlist
+    json: true
+  };
+
+  rp.post(options) // make the request
+    .then(response => {
+      res.json({ success: true });
+    })
+    .catch(error => {
+      console.error('Failed to add track to playlist:', error);
+      res.send('Failed to add track to playlist. Please try again.');
+    });
+});
+
+// GET playlist
+app.get('/playlist/:playlist_id', (req, res) => {
+  let options = {
+    url: `https://api.spotify.com/v1/playlists/${req.params.playlist_id}`, // Spotify's playlist endpoint with the playlist id
+    headers: { 'Authorization': 'Bearer ' + access_token }, // provide the access token in the header
+    json: true
+  };
+
+  rp.get(options) // make the request
+    .then(response => {
+      // format and return the playlist tracks
+      res.json(response.tracks.items.map(item => ({
+        name: item.track.name,
+        artist: item.track.artists[0].name,
+        album: item.track.album.name
+      })));
+    })
+    .catch(error => {
+      console.error('Failed to fetch playlist:', error);
+      res.send('Failed to fetch playlist. Please try again.');
+    });
+});
