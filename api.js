@@ -58,6 +58,10 @@ app.get('/error', (req, res) => {// define a route for the error endpoint. Displ
 
 app.listen(3000, () => {// start the server making it listen for requests on port 3000.
 	console.log('Server is running on port 3000');
+<<<<<<< HEAD
+  }); 
+  
+=======
   });
 
   // GET track details
@@ -124,3 +128,4 @@ app.get('/playlist/:playlist_id', (req, res) => {
       res.send('Failed to fetch playlist. Please try again.');
     });
 });
+>>>>>>> f57abcecdc31831603a46c23240da6588c4a582e
