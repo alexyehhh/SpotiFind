@@ -58,4 +58,5 @@ function showElement(elementId) {
     else {
       res.redirect('https://alexyehhh.github.io/spotifind/');
     }
+
   };
