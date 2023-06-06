@@ -57,4 +57,5 @@ app.get('/error', (req, res) => {// define a route for the error endpoint. Displ
 
 app.listen(3000, () => {// start the server making it listen for requests on port 3000.
 	console.log('Server is running on port 3000');
-  });
+  }); 
+  
