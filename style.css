@@ -54,8 +54,28 @@ h1{
 
 .hidden {
   display: none;
+  position: absolute;
 }
 
+#newButton1 {
+  bottom: 280px;
+  left: 20%;
+}
+
+#newButton2 {
+  bottom: 280px;
+  left: 40%;
+}
+
+#newButton3 {
+  bottom: 280px;
+  left: 60%;
+}
+
+#newButton4 {
+  bottom: 280px;
+  left: 80%;
+}
 /* button CSS */
 
 
@@ -138,6 +158,13 @@ html {
     animation: wave 12s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite, swell 8s ease -1.25s infinite;;
     transform: translate3d(0, 0, 0);
   }
+
+  .newButton {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }  
   
   
   
