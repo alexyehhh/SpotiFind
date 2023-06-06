@@ -52,7 +52,11 @@ function showElement(elementId) {
     const isAuthenticated = urlParams.get('authenticated');
 
   
-    if (isAuthenticated === 'true') {
+    if (isAuthenticated === 'true') { //access token check 
       handleAuthentication();
     }
+    else {
+      res.redirect('https://alexyehhh.github.io/spotifind/');
+    }
+
   };
