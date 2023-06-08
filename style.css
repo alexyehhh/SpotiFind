@@ -55,6 +55,8 @@ h1{
 .hidden {
   display: none;
   position: absolute;
+  height: 50px;
+  width: 50px;
 }
 
 #newButton1 {
