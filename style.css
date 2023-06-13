@@ -236,9 +236,10 @@ body {
 
 #playlist li {
   background: white;
-  display: flex;
-  flex-direction: row;  /* Change to row for side-by-side arrangement */
-  align-items: center;
+  /* display: flex; */
+  /* flex-direction: row;  Change to row for side-by-side arrangement */
+  /* align-items: center; */
+
   justify-content: start;  /* Adjusts positioning within flex container */
   margin: 10px;
   width: calc(50% - 20px);
@@ -246,6 +247,7 @@ body {
   border-radius: 5px;
   overflow: hidden;
   padding: 10px; /* Adding padding for better layout */
+  margin-bottom: 10px;
 }
 
 #playlist {
@@ -254,19 +256,17 @@ body {
   justify-content: center;
   padding: 0;
   width: 70%;
+  background-color: #559E54;
+  margin: 0 auto; /* Add this line to center the playlist horizontally */
 }
 
-#playlist li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
+
 
 #playlist li .album-cover {
   width: 100px;   /* Adjust width as needed */
   height: 100px;  /* Adjust height as needed */
   background-size: cover;
-  background-position: center;
+  background-position: left;
   margin-right: 20px;  /* Creates some space between the image and the text */
 }
 
@@ -276,7 +276,14 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  padding-top: 30px;
+  padding-top: 150px;
+  text-align: center; /* Add this line to center the playlist */
+}
+
+
+#playlistContainer h3 {
+  text-align: center;
+  padding-top: 20px;
 }
 
 #playlist li span {
