@@ -127,7 +127,7 @@ app.post('/export-playlist', (req, res) => {
           },
           body: JSON.stringify({
             name: playlistName,
-            description: 'Created by Moodtape',
+            description: 'Created by SpotiFind',
             public: false // make it a private playlist
           })
         };
