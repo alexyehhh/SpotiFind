@@ -5,7 +5,10 @@ btn.addEventListener("click", function() {
 
 function hideAll() {
   hideElement('applicationDescription');
+  showElement('playlistContainer');
   hideElement('connectDescription');
+  hideElement('wave');
+  hideElement('ocean');
   hideElement('connectBtn');
   hideElement('newButton1');
   hideElement('newButton2');
@@ -17,6 +20,19 @@ function hideAll() {
   hideElement('emote4');
   hideElement('playlistContainer');
   const element = document.querySelector('.emojis');
+  if (element) {
+    element.style.display = 'none';
+  }
+}
+
+function hideElement(elementIdOrClass) {
+  let element = document.getElementById(elementIdOrClass);
+  
+  // If element not found by ID, try class
+  if (!element) {
+    element = document.querySelector(`.${elementIdOrClass}`);
+  }
+  
   if (element) {
     element.style.display = 'none';
   }
@@ -38,12 +54,14 @@ function hideHome() {
   }
 }
 
+/*
 function hideElement(elementId) {
   const element = document.getElementById(elementId);
   if (element) {
     element.style.display = 'none';
   }
 }
+*/
 
 function showEmojiContainer() {
   const element = document.querySelector('.emojis');
