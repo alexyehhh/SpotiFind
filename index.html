@@ -5,32 +5,35 @@
     <meta name="description" content="Our SpotiFind App">
     <link rel="stylesheet" href="style.css">
 </head>
-    <body>
-        <main>
-            <div class="container">
-                <h1 id="applicationName">SpotiFind</h1>
-                <div class="ocean">
-                    <div class="wave"></div>
-                </div>
-                <h2 id="applicationDescription">Find new music based on your mood! Explore new artists, genres, and songs. If you decide that you don't like it, you can create a new one!</h2>
-                
-                <h3 id ="connectDescription">First connect to your Spotify account! We will use this to add the generated playlist to your account.</h3>
-                <button id="connectBtn">Connect</button>
-                <button id="newButton1" class="newButton">Happy</button>
-                <button id="newButton2" class="newButton">Excited</button>
-                <button id="newButton3" class="newButton">Sad</button>
-                <button id="newButton4" class="newButton">Chill</button>
-                <div class="emojis">
-                    <img src="happy.png" id="emote1">
-                    <img src="excited.png" id="emote2">
-                    <img src="gloomy.png" id="emote3">
-                    <img src="sad.png" id="emote4">
-                    
-                    
-                </div>
+<body>
+    <main>
+        <div class="container">
+            <h1 id="applicationName">SpotiFind</h1>
+            <div class="ocean">
+                <div class="wave"></div>
             </div>
-        </main>
-        <script src="jquery-3.6.4.min.js"></script>
-        <script src="script.js"></script>
-    </body>
-</html> 
+            <h2 id="applicationDescription">Find new music based on your mood! Explore new artists, genres, and songs. If you decide that you don't like it, you can create a new one!</h2>
+            
+            <h3 id="connectDescription">First connect to your Spotify account! We will use this to add the generated playlist to your account.</h3>
+            <button id="connectBtn">Connect</button>
+            <button id="newButton1" class="newButton">Happy</button>
+            <button id="newButton2" class="newButton">Excited</button>
+            <button id="newButton3" class="newButton">Sad</button>
+            <button id="newButton4" class="newButton">Chill</button>
+            <div class="emojis">
+                <img src="happy.png" id="emote1">
+                <img src="excited.png" id="emote2">
+                <img src="gloomy.png" id="emote3">
+                <img src="chill.png" id="emote4">
+            </div>
+
+            <div id="playlistContainer">
+                <h3>Generated Playlist:</h3>
+                <ul id="playlist"></ul>
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
