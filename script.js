@@ -1,349 +1,201 @@
-const btn = document.getElementById('connectBtn'); // get the element 
-btn.addEventListener("click", function() { // add a click event listener 
-  window.location.href = 'http://localhost:3000/login'; // redirect to the login page when the button is clicked
+// Get the connect button element and add a click event listener to it
+const btn = document.getElementById('connectBtn');
+btn.addEventListener("click", function() {
+  // Redirect to the login page when the connect button is clicked
+  window.location.href = 'http://localhost:3000/login';
 });
 
-function hideAll() { //Hide everything for the playlsit page 
-  hideElement('applicationDescription'); 
-  showElement('playlistContainer'); 
-  hideElement('connectDescription'); 
-  hideElement('wave');
-  hideElement('ocean'); 
-  hideElement('connectBtn'); 
-  hideElement('newButton1'); 
-  hideElement('newButton2'); 
-  hideElement('newButton3'); 
-  hideElement('newButton4'); 
-  hideElement('emote1'); 
-  hideElement('emote2'); 
-  hideElement('emote3'); 
-  hideElement('emote4'); 
-  hideElement('playlistContainer'); 
-  const element = document.querySelector('.emojis'); 
-  if (element) {
-    element.style.display = 'none'; 
-  }
-}
-
+// Function to hide an element by its ID or class name
 function hideElement(elementIdOrClass) {
-  let element = document.getElementById(elementIdOrClass); // get the element with the specified ID
-  
-  // if element not found by ID, try class
+  let element = document.getElementById(elementIdOrClass);
   if (!element) {
-    element = document.querySelector(`.${elementIdOrClass}`); // get the element with the specified class
+    // If the element is not found by ID, try finding it by class name
+    element = document.querySelector(`.${elementIdOrClass}`);
   }
-  
   if (element) {
-    element.style.display = 'none'; // hide the element
+    // Hide the element by setting its display property to none
+    element.style.display = 'none';
   }
 }
 
-function hideHome() { //Hide elements for when on homepage
-  hideElement('newButton1'); 
-  hideElement('newButton2'); 
-  hideElement('newButton3'); 
-  hideElement('newButton4'); 
-  hideElement('emote1'); 
-  hideElement('emote2'); 
-  hideElement('emote3'); 
-  hideElement('emote4'); 
-  hideElement('playlistContainer'); 
-  const element = document.querySelector('.emojis'); 
+// Function to hide all elements on the page
+function hideAll() {
+  // Hide various elements using their IDs or classes
+  hideElement('applicationDescription');
+  hideElement('connectDescription');
+  hideElement('wave');
+  hideElement('ocean');
+  hideElement('connectBtn');
+  hideElement('newButton1');
+  hideElement('newButton2');
+  hideElement('newButton3');
+  hideElement('newButton4');
+  hideElement('emote1');
+  hideElement('emote2');
+  hideElement('emote3');
+  hideElement('emote4');
+  hideElement('playlistContainer');
+  const element = document.querySelector('.emojis');
   if (element) {
-    element.style.display = 'none'; 
+    // Hide the emoji container element by setting its display property to none
+    element.style.display = 'none';
   }
 }
 
-function showEmojiContainer() {
-  const element = document.querySelector('.emojis'); // Ggt the element with the class 'emojis'
+// Function to hide elements specific to the home page
+function hideHome() {
+  // Hide elements related to the home page
+  hideElement('newButton1');
+  hideElement('newButton2');
+  hideElement('newButton3');
+  hideElement('newButton4');
+  hideElement('emote1');
+  hideElement('emote2');
+  hideElement('emote3');
+  hideElement('emote4');
+  hideElement('playlistContainer');
+  const element = document.querySelector('.emojis');
   if (element) {
-    element.style.display = 'flex'; // show the element with the class 'emojis'
+    // Hide the emoji container element by setting its display property to none
+    element.style.display = 'none';
   }
 }
 
+// Function to show an element by its ID
 function showElement(elementId) {
-  const element = document.getElementById(elementId); // get the element with the specified ID
+  const element = document.getElementById(elementId);
   if (element) {
-    element.style.display = 'block'; // show the element
+    // Show the element by setting its display property to block
+    element.style.display = 'block';
   }
 }
 
-function handleAuthentication() { //Once authorized hide connect button and display emote buttons 
-  hideElement('connectBtn'); 
-  showElement('newButton1'); 
-  showElement('newButton2'); 
-  showElement('newButton3'); 
-  showElement('newButton4'); 
-  showElement('emote1');
-  showElement('emote2'); 
-  showElement('emote3'); 
-  showElement('emote4'); 
-  hideElement('connectDescription'); 
-  showEmojiContainer(); 
+// Function to show the emoji container element
+function showEmojiContainer() {
+  const element = document.querySelector('.emojis');
+  if (element) {
+    // Show the emoji container element by setting its display property to flex
+    element.style.display = 'flex';
+  }
 }
 
-const connectBtn = document.getElementById('connectBtn'); // Get the element 
-connectBtn.addEventListener('click', () => { // add a click event listener 
-  localStorage.setItem('accessToken', getAccessToken()); // store the access token in the local storage
-  localStorage.setItem('refreshToken', getRefreshToken()); // store the refresh token in the local storage
+// Function to handle authentication
+function handleAuthentication() {
+  // Hide the connect button and show elements related to authenticated state
+  hideElement('connectBtn');
+  showElement('newButton1');
+  showElement('newButton2');
+  showElement('newButton3');
+  showElement('newButton4');
+  showElement('emote1');
+  showElement('emote2');
+  showElement('emote3');
+  showElement('emote4');
+  hideElement('connectDescription');
+  showEmojiContainer();
+}
+
+// Get the connect button element again
+const connectBtn = document.getElementById('connectBtn');
+connectBtn.addEventListener('click', () => {
+  // Store the access token and refresh token in the local storage when the connect button is clicked
+  localStorage.setItem('accessToken', getAccessToken());
+  localStorage.setItem('refreshToken', getRefreshToken());
 });
 
+// Run the following code when the window finishes loading
 window.onload = function() {
-  const accessToken = localStorage.getItem('accessToken'); // get the access token from the local storage
-  const refreshToken = localStorage.getItem('refreshToken'); // get the refresh token from the local storage
+  const accessToken = localStorage.getItem('accessToken');
+  const refreshToken = localStorage.getItem('refreshToken');
+  const urlParams = new URLSearchParams(window.location.search);
+  const isAuthenticated = urlParams.get('authenticated');
 
-  const urlParams = new URLSearchParams(window.location.search); // get the URL parameters
-  const isAuthenticated = urlParams.get('authenticated'); // get the value of the authenticated parameter
-
-  if (accessToken && refreshToken || isAuthenticated === 'true') { // check if access token and refresh token exist or isAuthenticated is true
-    handleAuthentication(); // call the handleAuthentication function
+  if (accessToken && refreshToken || isAuthenticated === 'true') {
+    // If access token and refresh token are present or the user is authenticated, handle the authentication
+    handleAuthentication();
   } else {
-    hideHome(); // call the hideHome function
+    // Otherwise, hide elements specific to the home page
+    hideHome();
   }
 };
 
-document.getElementById("newButton1").addEventListener("click", function() { // add a click event listener 
-  fetch('http://localhost:3000/generate-happy-playlist', { // fetch data from the specified URL
+// Function to handle button clicks for generating playlists
+function handleNewButtonClick(url) {
+  // Make a fetch request to the specified URL
+  fetch(url, {
     headers: {
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}` // include the access token in the request headers
+      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
     }
   })
   .then(response => {
     if (!response.ok) {
-      throw new Error('Network response was not ok'); //throw an error if the response is not successful
+      throw new Error('Network response was not ok');
     }
-    return response.json(); // return the response data as JSON
+    return response.json();
   })
   .then(trackDetails => {
-    if (Array.isArray(trackDetails)) { // check if trackDetails is an array
-      hideAll(); // call the hideAll function
-
-      const playlistContainer = document.getElementById('playlistContainer'); // get the element 
+    if (Array.isArray(trackDetails)) {
+      // If trackDetails is an array, hide all elements, display the playlist container, and populate the playlist
+      hideAll();
+      const playlistContainer = document.getElementById('playlistContainer');
       if (playlistContainer) {
-        playlistContainer.style.display = 'block'; // show the element 
+        playlistContainer.style.display = 'block';
       }
-
-      const playlist = document.getElementById('playlist'); // get the element 
-      playlist.innerHTML = ''; // Clear the playlist
-
-      trackDetails.forEach(track => { // loop through the track details
-        const listItem = document.createElement('li'); // create a new list item element
-        listItem.innerHTML = `<img src="${track.albumCover}" class="album-cover"><span>${track.name} by ${track.artist}</span>`; // Set the inner HTML of the list item
-        playlist.appendChild(listItem); // Append the list item to the playlist
+      const playlist = document.getElementById('playlist');
+      playlist.innerHTML = '';
+      trackDetails.forEach(track => {
+        // Create a list item for each track and append it to the playlist
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<img src="${track.albumCover}" class="album-cover"><span>${track.name} by ${track.artist}</span>`;
+        playlist.appendChild(listItem);
       });
-
-      const playlistName = prompt('Enter a name for your playlist:'); // Prompt the user to enter a playlist name
-      return fetch('http://localhost:3000/export-playlist', { // Fetch data from the specified URL
+      // Prompt the user to enter a name for the playlist
+      const playlistName = prompt('Enter a name for your playlist:');
+      const playlistNameElement = document.getElementById('playlistName');
+      playlistNameElement.textContent = playlistName;
+      return fetch('http://localhost:3000/export-playlist', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('accessToken')}` // Include the access token in the request headers
+          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
         },
         body: JSON.stringify({
           playlistName: playlistName,
-          trackURIs: trackDetails.map(track => track.uri) // Convert trackDetails to an array of track URIs
+          trackURIs: trackDetails.map(track => track.uri)
         })
       });
     } else {
-      console.error('Error: trackURIs is not an array:', trackDetails); // Log an error if trackURIs is not an array
+      console.error('Error: trackURIs is not an array:', trackDetails);
     }
   })
   .then(response => {
     if (response.ok) {
-      alert('Playlist successfully exported!'); // Display a success message
+      // If the playlist is successfully exported, show an alert message
+      alert('Playlist successfully exported!');
     } else {
-      throw new Error('Failed to export the playlist.'); // Throw an error if playlist export fails
+      throw new Error('Failed to export the playlist.');
     }
   })
   .catch(error => {
-    console.error('Error:', error); // Log any errors
-    alert("There was an error generating your playlist. Please try again later."); // Display an error message to the user
+    console.error('Error:', error);
+    // Display an alert for any errors that occurred during playlist generation
+    alert("There was an error generating your playlist. Please try again later.");
   });
+}
+
+// Add click event listeners to the new buttons, each invoking the handleNewButtonClick function with a specific URL
+document.getElementById("newButton1").addEventListener("click", function() {
+  handleNewButtonClick('http://localhost:3000/generate-happy-playlist');
 });
-
-//Do the same for rest of buttons below just changing criteria 
-
 
 document.getElementById("newButton2").addEventListener("click", function() {
-  fetch('http://localhost:3000/generate-excited-playlist', {
-    headers: {
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    }
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(trackDetails => {
-    if (Array.isArray(trackDetails)) {
-      hideAll();
-
-      const playlistContainer = document.getElementById('playlistContainer');
-      if (playlistContainer) {
-        playlistContainer.style.display = 'block';
-      }
-
-      const playlist = document.getElementById('playlist');
-      playlist.innerHTML = '';
-
-      trackDetails.forEach(track => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `<img src="${track.albumCover}" class="album-cover"><span>${track.name} by ${track.artist}</span>`;
-        playlist.appendChild(listItem);
-      });
-
-      const playlistName = prompt('Enter a name for your playlist:');
-      return fetch('http://localhost:3000/export-playlist', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        },
-        body: JSON.stringify({
-          playlistName: playlistName,
-          trackURIs: trackDetails.map(track => track.uri)
-        })
-      });
-    } else {
-      console.error('Error: trackURIs is not an array:', trackDetails);
-    }
-  })
-  .then(response => {
-    if (response.ok) {
-      alert('Playlist successfully exported!');
-    } else {
-      throw new Error('Failed to export the playlist.');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    alert("There was an error generating your playlist. Please try again later.");
-  });
+  handleNewButtonClick('http://localhost:3000/generate-excited-playlist');
 });
-
 
 document.getElementById("newButton3").addEventListener("click", function() {
-  fetch('http://localhost:3000/generate-sad-playlist', {
-    headers: {
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    }
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(trackDetails => {
-    if (Array.isArray(trackDetails)) {
-      hideAll();
-
-      const playlistContainer = document.getElementById('playlistContainer');
-      if (playlistContainer) {
-        playlistContainer.style.display = 'block';
-      }
-
-      const playlist = document.getElementById('playlist');
-      playlist.innerHTML = '';
-
-      trackDetails.forEach(track => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `<img src="${track.albumCover}" class="album-cover"><span>${track.name} by ${track.artist}</span>`;
-        playlist.appendChild(listItem);
-      });
-
-      const playlistName = prompt('Enter a name for your playlist:');
-      return fetch('http://localhost:3000/export-playlist', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        },
-        body: JSON.stringify({
-          playlistName: playlistName,
-          trackURIs: trackDetails.map(track => track.uri)
-        })
-      });
-    } else {
-      console.error('Error: trackURIs is not an array:', trackDetails);
-    }
-  })
-  .then(response => {
-    if (response.ok) {
-      alert('Playlist successfully exported!');
-    } else {
-      throw new Error('Failed to export the playlist.');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    alert("There was an error generating your playlist. Please try again later.");
-  });
+  handleNewButtonClick('http://localhost:3000/generate-sad-playlist');
 });
 
-
 document.getElementById("newButton4").addEventListener("click", function() {
-  fetch('http://localhost:3000/generate-chill-playlist', {
-    headers: {
-      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-    }
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(trackDetails => {
-    if (Array.isArray(trackDetails)) {
-      hideAll();
-
-      const playlistContainer = document.getElementById('playlistContainer');
-      if (playlistContainer) {
-        playlistContainer.style.display = 'block';
-      }
-
-      const playlist = document.getElementById('playlist');
-      playlist.innerHTML = '';
-
-      trackDetails.forEach(track => {
-        const listItem = document.createElement('li');
-        listItem.innerHTML = `<img src="${track.albumCover}" class="album-cover"><span>${track.name} by ${track.artist}</span>`;
-        playlist.appendChild(listItem);
-      });
-
-      const playlistName = prompt('Enter a name for your playlist:');
-      return fetch('http://localhost:3000/export-playlist', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-        },
-        body: JSON.stringify({
-          playlistName: playlistName,
-          trackURIs: trackDetails.map(track => track.uri)
-        })
-      });
-    } else {
-      console.error('Error: trackURIs is not an array.');
-      throw new Error('trackURIs is not an array.');
-    }
-  })
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(playlist => {
-    document.getElementById('playlistLink').href = playlist.external_urls.spotify;
-    document.getElementById('playlistCover').src = playlist.images[0].url;
-    document.getElementById('playlistCover').style.display = 'block';
-    document.getElementById('playlistLink').style.display = 'block';
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+  handleNewButtonClick('http://localhost:3000/generate-chill-playlist');
 });
