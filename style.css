@@ -60,14 +60,35 @@ h1{
 display: none;
 position: absolute;
 }
+/* CSS for emotion buttons*/
 
 .newButton {
   position: absolute;
   left: 50%;
 
   transform: translate(-50%, -50%);
-}
 
+    background-color: #c2fbd7;
+    border-radius: 100px;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset,rgba(44, 187, 99, .15) 0 1px 2px,rgba(44, 187, 99, .15) 0 2px 4px,rgba(44, 187, 99, .15) 0 4px 8px,rgba(44, 187, 99, .15) 0 8px 16px,rgba(44, 187, 99, .15) 0 16px 32px;
+    color: green;
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+.newButton:hover {
+    box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+}
 #newButton1 {
 bottom: 150px;
 left: 27%;
@@ -258,6 +279,10 @@ body {
   width: 70%;
   background-color: #559E54;
   margin: 0 auto; /* Add this line to center the playlist horizontally */
+  border-radius: 15px;
+  padding: 20px; 
+  border: solid #0A3409;
+  
 }
 
 
@@ -278,6 +303,7 @@ body {
   width: 100%;
   padding-top: 150px;
   text-align: center; /* Add this line to center the playlist */
+  
 }
 
 
@@ -289,4 +315,16 @@ body {
 #playlist li span {
   flex-grow: 1; /* Allows the text to take up remaining space */
   text-align: left; /* Aligns the text to the left */
+}
+
+#playlistName {
+  font-family: Luminari, fantasy;
+  font-size: bold;
+  border-radius: 15px 50px;
+  background: #c6dcc6;
+  border: solid #0A3409;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  height: 50px;
+  width: auto;
 }
